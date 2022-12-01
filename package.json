@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/IgnacioSEO/Toss#readme",
   "dependencies": {
+    "@tosspayments/payment-sdk": "^1.2.3",
     "aws-sdk": "^2.1264.0",
     "cors": "^2.8.5",
     "dbmate": "^1.0.3",
