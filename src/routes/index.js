@@ -1,9 +1,9 @@
 const express = require("express");
 
+const { paymentRouter } = require("./paymentRouter");
+
 const router = express.Router();
 
-const { tossRouter } = require("./tossRouter");
+router.use("/payments", paymentRouter);
 
-router.use("/toss", tossRouter);
-
-module.exports = router;
+module.exports = { router };
