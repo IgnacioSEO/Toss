@@ -9,15 +9,11 @@ const createPaymentHistory = async (req, res) => {
 };
 
 const getPaymentHistory = async (req, res) => {
-  try {
-    const { userId } = req.body;
+  const { userId } = req.body;
 
-    await paymentService.getPaymentHistory(userId);
+  await paymentService.getPaymentHistory(userId);
 
-    return res.status(200).json({ data: payments });
-  } catch (err) {
-    return res.status(err.statusCode || 500).json({ message: "DATA_CANNOT_BE_RESOLVED" });
-  }
+  return res.status(200).json({ data: payments });
 };
 
 module.exports = { createPaymentHistory, getPaymentHistory };
