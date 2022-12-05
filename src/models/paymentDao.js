@@ -32,7 +32,7 @@ const getPaymentHistory = async (userId) => {
         p.user_id,
         p.order_id,
         p.order_name,
-        p.total_ammount
+        p.total_amount
       FROM payments p
       WHERE p.user_id = ?
       )   
