@@ -1,10 +1,16 @@
 const paymentDao = require("../models/paymentDao");
+const axios = require("axios");
 
-const createPaymentHistory = async (userId, orderId, orderName, totalAmount) => {
-  return await paymentDao.createPaymentHistory(userId, orderId, orderName, totalAmount);
+const createPaymentHistory = async (orderId, paymentKey, amount) => {
+  return await paymentDao.createPaymentHistory(orderId, paymentKey, amount);
 };
-const getPaymentHistory = async (userId) => {
-  return await paymentDao.getPaymentHistory(userId);
+const getPaymentHistory = async () => {
+  console.log(process.env.SECRET_KEY);
+  return await axios.get("https://api.tosspayments.com/v1/payments/orders/QIZBXKZ_q7aV5k63nFbOt", {
+    headers: {
+      Authorization: `Basic ${process.env.SECRET_KEY}`,
+    },
+  });
 };
 
 module.exports = {
