@@ -1,7 +1,6 @@
 -- migrate:up
 CREATE TABLE payments (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
   payment_key VARCHAR(200) NULL,
   order_id VARCHAR(255) NOT NULL,
   order_name VARCHAR(255) NULL,
