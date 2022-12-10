@@ -1,24 +1,22 @@
 const { appDataSource } = require("./dataSource");
 
-const createPaymentHistory = async (userId, orderId, orderName, totalAmount) => {
+const createPaymentHistory = async (orderId, paymentKey, amount) => {
   const result = await appDataSource.query(
     `
       INSERT INTO payments
       (
-        user_id,
         order_id,
-        order_name,
+        payment_key,
         total_amount
       )
       VALUES
       (
-        ?,
         ?, 
         ?, 
         ?
       );
     `,
-    [userId, orderId, orderName, totalAmount]
+    [orderId, paymentKey, amount]
   );
 
   return result;
@@ -29,12 +27,11 @@ const getPaymentHistory = async (userId) => {
     `
       SELECT
       (
-        p.user_id,
         p.order_id,
         p.order_name,
         p.total_amount
       FROM payments p
-      WHERE p.user_id = ?
+      WHERE p.order_id = ?
       )   
     `,
     [userId]

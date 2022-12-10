@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
-const { router } = require("./src/routes/index");
+const router = require("./src/routes/index");
 
 const createApp = () => {
   const app = express();
